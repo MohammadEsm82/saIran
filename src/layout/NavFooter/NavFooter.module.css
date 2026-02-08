@@ -1,0 +1,37 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid grey;
+  background-color: var(--nav-c);
+}
+.navLinks {
+  display: flex;
+  
+}
+.navLinks > * {
+  padding: 20px 30px;
+  height: 100%;
+  transition: all 0.3s ease-out;
+  position: relative;
+}
+.navLinks > *:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.outlet {
+  background-color: rgba(128, 128, 128, 0.391);
+  min-height: 80vh;
+}
+.footer {
+  /* background-color: #272727; */
+  background-color: var(--nav-c);
+  color: #aaaaaa;
+  height: 300px;
+  padding: 20px;
+}
