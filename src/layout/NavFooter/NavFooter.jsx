@@ -27,6 +27,34 @@ const NavFooter = () => {
       </div>
 
       <footer className={styles.footer}>
+
+
+        {/* background geometric lines */}
+        <svg
+          className={styles.footerLines}
+          viewBox="0 0 1000 400"
+          preserveAspectRatio="none"
+        >
+          <polyline
+            points="650,0 1000,260"
+            stroke="rgba(255,255,255,0.8)"
+            strokeWidth="1"
+            fill="none"
+          />
+          <polyline
+            points="420,400 900,120"
+            stroke="rgba(255,255,255,0.5)"
+            strokeWidth="1"
+            fill="none"
+          />
+          <polyline
+            points="200,320 720,0"
+            stroke="rgba(255,255,255,0.4)"
+            strokeWidth="1"
+            fill="none"
+          />
+        </svg>
+
         <div className={styles.footercontent}>
 
 

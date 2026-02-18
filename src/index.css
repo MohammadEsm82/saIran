@@ -4,8 +4,17 @@
   box-sizing: border-box;
 }
 body {
+  background: var(--background);
   color: black;
   direction: rtl;
+  --background: #ddd;
+  --foreground: #222;
+  --primary-color: #004ccf;
+  --transition: all 0.3s ease-out;
+  --border-radius: 15px;
+}
+:root {
+  background-color: var(--background);
 }
 a {
   text-decoration: none;
