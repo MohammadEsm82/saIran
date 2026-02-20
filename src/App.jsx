@@ -5,6 +5,7 @@ import image1 from "./assets/images/1.webp";
 import image2 from "./assets/images/2.jpg";
 import image3 from "./assets/images/3.webp";
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
+import ParallaxBG from "./components/ParallaxBG/ParallaxBG";
 
 function App() {
 
@@ -30,6 +31,8 @@ function App() {
         ]}/>
 
         <ProductCarousel />
+
+        <ParallaxBG />
     </div>
   )
 }

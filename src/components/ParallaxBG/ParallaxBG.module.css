@@ -1,0 +1,44 @@
+.main {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url(../../assets/images/parallax.webp);
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 40%;
+  margin-bottom: 100vh;
+}
+
+.maxWidth {
+  width: 100%;
+  height: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  gap: 20px;
+  text-shadow: 0 0 2px black;
+}
+.maxWidth h3 {
+  font-size: 24px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid white;
+}
+.maxWidth a {
+  text-shadow: none;
+  padding: 10px 15px;
+  background-color: white;
+  color: black;
+  transition: var(--transition);
+}
+.maxWidth a:hover {
+  background-color: #3B55E6;
+  color: white;
+}
