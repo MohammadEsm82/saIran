@@ -4,6 +4,7 @@ import Carousel from "./components/Carousel/Carousel";
 import image1 from "./assets/images/1.webp";
 import image2 from "./assets/images/2.jpg";
 import image3 from "./assets/images/3.webp";
+import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 
 function App() {
 
@@ -27,6 +28,8 @@ function App() {
             image:image3
           }
         ]}/>
+
+        <ProductCarousel />
     </div>
   )
 }
