@@ -38,9 +38,10 @@
 }
 
 .footercontent{
-  margin: 40px 80px;
+  max-width: var(--max-width);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin: 50px auto;
 }
 
 .footertitle{
