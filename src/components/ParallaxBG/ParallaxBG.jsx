@@ -14,10 +14,10 @@ const ParallaxBG = () => {
     const el = mainRef.current;
     gsap.fromTo(el,
       {
-        backgroundPosition: "center 20%"
+        backgroundPosition: "center 30%"
       },
       {
-        backgroundPosition: "center 80%",
+        backgroundPosition: "center 70%",
         ease:"none",
         delay: 0.0,
         scrollTrigger: {

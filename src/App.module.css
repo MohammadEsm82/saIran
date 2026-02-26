@@ -34,7 +34,6 @@
 }
 
 .details p, .details a{
-  font-size: 20px;
   margin-bottom: 30px;
   text-align: justify;
 }
@@ -73,4 +72,140 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.services {
+  max-width: var(--max-width);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 100px;
+}
+.services > h3, .newsRoom > h3 {
+  font-size: 24px;
+}
+.services > p, .services a {
+  font-size: 20px;
+}
+.services > a, .archiveLink {
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: var(--background);
+}
+.serviceCards {
+  width: 100%;
+  margin-top: 30px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.serviceCard {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.serviceCard:hover {
+  border-radius: var(--border-radius);
+}
+
+.serviceCard > div {
+  opacity: 0;
+  transition: var(--transition);
+  z-index: 10;
+}
+.serviceCard:hover > div {
+  opacity: 1;
+}
+
+.serviceCard img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: var(--transition);
+}
+.serviceCard:hover img {
+  opacity: 0.7;
+  filter: blur(5px);
+}
+
+
+.newsRoom {
+  width: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 100px;
+}
+.newsRoom > a {
+  align-self: flex-end;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  gap: 30px;
+}
+
+.newsCard {
+  height: 100%;
+  position: relative;
+  padding-bottom: 50px;
+}
+.newsCard img {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.newsDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.newsDetail h4 {
+  font-size: 22px;
+}
+
+.date {
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+.newsA {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: fit-content;
+  transition: var(--transition);
+  margin-top: 30px;
+}
+.newsA::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  right: 0;
+  height: 2px;
+  width: 0;
+  border-radius: 1px;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+}
+.newsA:hover {
+  color: var(--primary-color);
+}
+.newsA:hover::after {
+  width: 100%;
 }

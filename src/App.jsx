@@ -1,4 +1,8 @@
 import styles from "./App.module.css";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { FaPlay } from "react-icons/fa";
 
 import Carousel from "./components/Carousel/Carousel";
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
@@ -7,11 +11,41 @@ import ParallaxBG from "./components/ParallaxBG/ParallaxBG";
 import image1 from "./assets/images/1.webp";
 import image2 from "./assets/images/2.jpg";
 import image3 from "./assets/images/3.webp";
-import ourstoryImage from "./assets/images/ourstory.jpg"
-
-import { FaPlay } from "react-icons/fa";
+import ourstoryImage from "./assets/images/ourstory.jpg";
+import serviceImage from "./assets/images/serviceImage.jpg";
+import newsImage1 from "./assets/images/news1.jpg";
+import newsImage2 from "./assets/images/news2.jpg";
+import newsImage3 from "./assets/images/news3.jpg";
 
 function App() {
+  const serviceCardsRef = useRef(null);
+
+  useGSAP(()=> {
+    const services = serviceCardsRef.current;
+
+    services.childNodes.forEach(card => {
+      const content = card.childNodes[0];
+
+      const outerRX = gsap.quickTo(card, "rotationX", { ease: "elastic" });
+      const outerRY = gsap.quickTo(card, "rotationY", { ease: "elastic" });
+      const innerX = gsap.quickTo(content, "x", { ease: "elastic" });
+      const innerY = gsap.quickTo(content, "y", { ease: "elastic" });
+
+      card.addEventListener("pointermove", (e) => {
+        outerRX(gsap.utils.interpolate(15, -15, (e.y-card.getBoundingClientRect().y) / card.clientHeight));
+        outerRY(gsap.utils.interpolate(-15, 15, (e.x-card.getBoundingClientRect().x) / card.clientWidth));
+        innerX(gsap.utils.interpolate(-10, 10, (e.x-card.getBoundingClientRect().x) / card.clientWidth));
+        innerY(gsap.utils.interpolate(-10, 10, (e.y-card.getBoundingClientRect().y) / card.clientHeight));
+      });
+      
+      card.addEventListener("pointerleave", () => {
+        outerRX(0);
+        outerRY(0);
+        innerX(0);
+        innerY(0);
+      });
+    })
+  })
 
   return (
     <div className={styles.container}>
@@ -62,6 +96,78 @@ function App() {
           </a>
           <img className={styles.ourstoryimage} src={ourstoryImage} alt=""/>
         </div>
+      </div>
+
+
+      <div className={styles.services}>
+        <h3>خدمات | services</h3>
+        <p>مشاوره،کالیبراسیون،آموزش و پشتیبانی تجهیزات پزشکی با استانداردهای بین‌المللی</p>
+        <a href="#">توضیحات بیشتر</a>
+        <div ref={serviceCardsRef} className={styles.serviceCards}>
+          <div className={styles.serviceCard}>
+            <div>
+              <h4>خدمات مشاوره</h4>
+              <p>معرفی تجهیز مناسب با نیاز و کاربرد هر مرکز درمانی<br/>نوسازی و تجهیز مراکز درمانی و اورژانس ها<br/>بهبود فرآیندهای داخلی بیمارستان ها جهت افزایش بهره وری آنها<br/>هوشمندسازی بیمارستان ها</p>
+            </div>
+            <img src={serviceImage} alt=""/>
+          </div>
+          <div className={styles.serviceCard}>
+            <div>
+              <h4>خدمات مشاوره</h4>
+              <p>معرفی تجهیز مناسب با نیاز و کاربرد هر مرکز درمانی<br/>نوسازی و تجهیز مراکز درمانی و اورژانس ها<br/>بهبود فرآیندهای داخلی بیمارستان ها جهت افزایش بهره وری آنها<br/>هوشمندسازی بیمارستان ها</p>
+            </div>
+            <img src={serviceImage} alt=""/>
+          </div>
+          <div className={styles.serviceCard}>
+            <div>
+              <h4>خدمات مشاوره</h4>
+              <p>معرفی تجهیز مناسب با نیاز و کاربرد هر مرکز درمانی<br/>نوسازی و تجهیز مراکز درمانی و اورژانس ها<br/>بهبود فرآیندهای داخلی بیمارستان ها جهت افزایش بهره وری آنها<br/>هوشمندسازی بیمارستان ها</p>
+            </div>
+            <img src={serviceImage} alt=""/>
+          </div>
+          <div className={styles.serviceCard}>
+            <div>
+              <h4>خدمات مشاوره</h4>
+              <p>معرفی تجهیز مناسب با نیاز و کاربرد هر مرکز درمانی<br/>نوسازی و تجهیز مراکز درمانی و اورژانس ها<br/>بهبود فرآیندهای داخلی بیمارستان ها جهت افزایش بهره وری آنها<br/>هوشمندسازی بیمارستان ها</p>
+            </div>
+            <img src={serviceImage} alt=""/>
+          </div>
+        </div>
+      </div>
+
+      
+      <div className={styles.newsRoom}>
+        <h3>اتاق خبر | Newsroom</h3>
+        <div className={styles.newsGrid}>
+          <div className={styles.newsCard}>
+            <img src={newsImage1} alt=""/>
+            <div className={styles.newsDetail}>
+              <a href="#"><h4>دهمین کنگره انجمن های ارتوپدی</h4></a>
+              <p className={styles.date}>1403.07.19</p>
+              <p>حضور پررنگ صاایران در دهمین کنگره منطقه‌ای ارتوپدی؛ نمایش توانمند</p>
+              <a href="#" className={styles.newsA}>جزئیات بیشتر</a>
+            </div>
+          </div>
+          <div className={styles.newsCard}>
+            <img src={newsImage2} alt=""/>
+            <div className={styles.newsDetail}>
+              <a href="#"><h4>بازدید مهندس عبدالرحیم گرجی</h4></a>
+              <p className={styles.date}>1403.07.19</p>
+              <p>بازدید معاون فناوری اطلاعات کل سازمان زندان‌ها و هیئت همراه از صنع</p>
+              <a href="#" className={styles.newsA}>جزئیات بیشتر</a>
+            </div>
+          </div>
+          <div className={styles.newsCard}>
+            <img src={newsImage3} alt=""/>
+            <div className={styles.newsDetail}>
+              <a href="#"><h4>بازدید جناب آقای دکتر پیرصالحی</h4></a>
+              <p className={styles.date}>1403.07.19</p>
+              <p>ریاست محترم سازمان غذا و دارو، از مجتمع صنعتی تجهیزات پزشکی</p>
+              <a href="#" className={styles.newsA}>جزئیات بیشتر</a>
+            </div>
+          </div>
+        </div>
+        <a href="#" className={styles.archiveLink}>آرشیو خبرها</a>
       </div>
     </div>
   )
