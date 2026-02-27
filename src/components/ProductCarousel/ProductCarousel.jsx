@@ -56,7 +56,7 @@ const ProductCarousel = () => {
 
     return (
         <div className={styles.main}>
-            <h3>Products | محصولات</h3>
+            <h3>محصولات | Products</h3>
             <p>تنوع محصولات در صنـعت تـجهیزات پـزشکی صاایـران</p>
             <div className={styles.buttons}>
                 {products.map((product, index)=>

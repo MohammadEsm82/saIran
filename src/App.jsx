@@ -1,7 +1,8 @@
 import styles from "./App.module.css";
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { Link } from "react-router";
 import { FaPlay } from "react-icons/fa";
 
 import Carousel from "./components/Carousel/Carousel";
@@ -82,7 +83,7 @@ function App() {
             <br/>
             طراحی و تولید محصولات جدید و متنوع، همگام با تکنولوژی روز، همواره از راهبرد های اصلی ما بوده است...
           </p>
-          <a href="#">درباره ما</a>
+          <Link to="aboutus">درباره ما</Link>
                  
         </div>
 

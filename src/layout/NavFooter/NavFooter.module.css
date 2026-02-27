@@ -3,16 +3,27 @@
   flex-direction: column;
 }
 .nav {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  height: 100px;
+  width: 100%;
+  background-color: var(--background);
+  z-index: 10000;
+  padding: 20px;
+  border-bottom: 1px solid grey;
+}
+.maxwidth{
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
-  border-bottom: 1px solid grey;
-  background-color: var(--nav-c);
+  width: 100%;
+  max-width: var(--max-width);
 }
 .navLinks {
   display: flex;
-  
 }
 .navLinks > * {
   padding: 20px 30px;
@@ -25,7 +36,8 @@
 }
 
 .outlet {
-  min-height: 80vh;
+  min-height: calc(100vh - 400px);
+  margin-top: 100px;
 }
 .footer {
   position: relative;

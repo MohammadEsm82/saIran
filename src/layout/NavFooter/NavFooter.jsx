@@ -6,22 +6,23 @@ import logo from "../../assets/images/logo.png";
 const NavFooter = () => {
   return (
     <div className={styles.main}>
-      <nav className={styles.nav}>
-        <div className={styles.navLinks}>
-          <Link to={"/"}>صفحه اصلی</Link>
-          <Link to={"/about"}>درباره ما</Link>
-          <Link to={"/product"}>محصولات</Link>
-          <Link to={"#"}>خدمات</Link>
-          <Link to={"#"}>تحقیق و توسعه</Link>
-          <Link to={"#"}>اتاق خبر</Link>
-          <Link to={"#"}>تماس با ما</Link>
+      <nav className={styles.nav}> 
+        <div className={styles.maxwidth}>
+            <div className={styles.navLinks}>
+              <Link to={"/"}>صفحه اصلی</Link>
+              <Link to={"/aboutus"}>درباره ما</Link>
+              <Link to={"/product"}>محصولات</Link>
+              <Link to={"#"}>خدمات</Link>
+              <Link to={"#"}>تحقیق و توسعه</Link>
+              <Link to={"#"}>اتاق خبر</Link>
+              <Link to={"/"}>تماس با ما</Link>
+            </div>
+
+            <Link to={"/"}>
+              <img src={logo} alt=""/>
+            </Link>
         </div>
-
-        <Link to={"/"}>
-          <img src={logo} alt=""/>
-        </Link>
       </nav>
-
       <div className={styles.outlet}>
         <Outlet />
       </div>

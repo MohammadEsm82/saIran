@@ -12,7 +12,8 @@ body {
   --primary-color: #004ccf;
   --transition: all 0.3s ease-out;
   --border-radius: 15px;
-  --max-width: 1300px;
+  --max-width: 1700px;
+  font-family: IRANSans, Arial, Helvetica, sans-serif;
 }
 :root {
   background-color: var(--background);
@@ -21,4 +22,10 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  src: url(/fonts/IRANSansWeb.woff2) format('woff2'),
+    url(/fonts/IRANSansWeb.woff) format('woff');
 }
