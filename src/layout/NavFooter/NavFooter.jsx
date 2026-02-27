@@ -15,7 +15,7 @@ const NavFooter = () => {
               <Link to={"#"}>خدمات</Link>
               <Link to={"#"}>تحقیق و توسعه</Link>
               <Link to={"#"}>اتاق خبر</Link>
-              <Link to={"/"}>تماس با ما</Link>
+              <Link to={"/contactus"}>تماس با ما</Link>
             </div>
 
             <Link to={"/"}>

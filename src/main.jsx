@@ -5,6 +5,7 @@ import './index.css'
 import NavFooter from './layout/NavFooter/NavFooter.jsx';
 import App from './App.jsx'
 import AboutUs from './pages/AboutUs/AboutUs.jsx';
+import ContactUs from './pages/ContactUs/ContactUs.jsx';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -12,6 +13,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/" element={<NavFooter />} >
         <Route index element={<App />} />
         <Route path='/aboutus' element={<AboutUs />} />
+        <Route path='/contactus' element={<ContactUs />} />
         <Route path='/product' element={<h1>product</h1>} />
         <Route path='/*' element={<Link to={"/"}>404 - Not Found</Link>}/>
       </Route>
