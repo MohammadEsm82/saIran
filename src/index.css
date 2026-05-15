@@ -15,6 +15,9 @@ body {
   --max-width: 1700px;
   font-family: IRANSans, Arial, Helvetica, sans-serif;
 }
+input, button {
+  font-family: IRANSans, Arial, Helvetica, sans-serif;
+}
 :root {
   background-color: var(--background);
   font-size: 20px;

@@ -1,9 +1,30 @@
 import { Link, Outlet } from "react-router";
+import { useEffect, useState } from "react";
+
 import styles  from "./NavFooter.module.css";
 
 import logo from "../../assets/images/logo.png";
+import UserContext from "../../contexts/UserContext";
 
 const NavFooter = () => {
+  const [user, setUser] = useState("");
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    const userLocal = JSON.parse(localStorage.getItem("user"));
+    const tokenLocal = localStorage.getItem("token");
+
+    if ( userLocal && tokenLocal) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setUser(userLocal);
+      setToken(tokenLocal);
+    } else if (userLocal || tokenLocal) {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      window.location.reload();
+    }
+  }, []);
+
   return (
     <div className={styles.main}>
       <nav className={styles.nav}> 
@@ -12,10 +33,15 @@ const NavFooter = () => {
               <Link to={"/"}>صفحه اصلی</Link>
               <Link to={"/aboutus"}>درباره ما</Link>
               <Link to={"/product"}>محصولات</Link>
-              <Link to={"#"}>خدمات</Link>
-              <Link to={"#"}>تحقیق و توسعه</Link>
+              {/* <Link to={"#"}>خدمات</Link>
+              <Link to={"#"}>تحقیق و توسعه</Link> */}
               <Link to={"#"}>اتاق خبر</Link>
               <Link to={"/contactus"}>تماس با ما</Link>
+              {user?.fname ?
+                <Link to={"/profile"}>{user.fname}</Link>
+              :
+                <Link to={"/login"}>ورود/ثبت‌نام</Link>
+              }
             </div>
 
             <Link to={"/"}>
@@ -23,12 +49,14 @@ const NavFooter = () => {
             </Link>
         </div>
       </nav>
-      <div className={styles.outlet}>
-        <Outlet />
-      </div>
+
+      <UserContext.Provider value={{ user, token }}>
+        <div className={styles.outlet}>
+          <Outlet />
+        </div>
+      </UserContext.Provider>
 
       <footer className={styles.footer}>
-
 
         {/* background geometric lines */}
         <svg

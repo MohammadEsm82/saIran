@@ -51,6 +51,7 @@
 
 .footercontent{
   max-width: var(--max-width);
+  padding: 0 30px;
   display: flex;
   justify-content: space-between;
   margin: 50px auto;
