@@ -5,18 +5,22 @@ import styles  from "./NavFooter.module.css";
 
 import logo from "../../assets/images/logo.png";
 import UserContext from "../../contexts/UserContext";
+import { useAuth } from "../../contexts/AuthContext";
+import CartDrawer from "../../components/Cart/CartDrawer";
 
 const NavFooter = () => {
+  const { isAdmin } = useAuth();
   const [user, setUser] = useState("");
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    const userLocal = JSON.parse(localStorage.getItem("user"));
+    
+    const userLocal = localStorage.getItem("user");
     const tokenLocal = localStorage.getItem("token");
 
     if ( userLocal && tokenLocal) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setUser(userLocal);
+      setUser(JSON.parse(userLocal));
       setToken(tokenLocal);
     } else if (userLocal || tokenLocal) {
       localStorage.removeItem("user");
@@ -32,7 +36,7 @@ const NavFooter = () => {
             <div className={styles.navLinks}>
               <Link to={"/"}>صفحه اصلی</Link>
               <Link to={"/aboutus"}>درباره ما</Link>
-              <Link to={"/product"}>محصولات</Link>
+              <Link to={"/products"}>محصولات</Link>
               {/* <Link to={"#"}>خدمات</Link>
               <Link to={"#"}>تحقیق و توسعه</Link> */}
               <Link to={"#"}>اتاق خبر</Link>
@@ -42,6 +46,10 @@ const NavFooter = () => {
               :
                 <Link to={"/login"}>ورود/ثبت‌نام</Link>
               }
+              {isAdmin && 
+                <Link to={"/admin"}>پنل ادمین</Link>
+              }
+              <CartDrawer />
             </div>
 
             <Link to={"/"}>
