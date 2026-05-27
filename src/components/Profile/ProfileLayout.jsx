@@ -1,15 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router';
 import { useAuth } from '../../contexts/AuthContext';
 import PersonalInfo from './PersonalInfo';
 import ChangePhone from './ChangePhone';
 import OrdersList from './OrdersList';
 import DeleteAccount from './DeleteAccount';
+import Checkout from './Checkout';
 import AlertMessage from '../Common/AlertMessage';
 
 const ProfileLayout = () => {
     const { user, logout } = useAuth();
-    const [activeTab, setActiveTab] = useState('personal');
+    const navigate = useNavigate();
+    const location = useLocation();
     const [alert, setAlert] = useState({ message: '', type: '' });
+
+    // دریافت تب فعال از پارامتر URL
+    const getActiveTabFromUrl = () => {
+        const params = new URLSearchParams(location.search);
+        const tab = params.get('tab');
+        return tab && ['personal', 'orders', 'changePhone', 'deleteAccount', 'checkout'].includes(tab) 
+            ? tab 
+            : 'personal';
+    };
+
+    const [activeTab, setActiveTab] = useState(getActiveTabFromUrl());
+
+    // وقتی URL تغییر می‌کند، تب فعال را به روز کن
+    useEffect(() => {
+         
+        setActiveTab(getActiveTabFromUrl());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location.search]);
+
+    // تغییر تب و به روز رسانی URL
+    const handleTabChange = (tabId) => {
+        setActiveTab(tabId);
+        navigate(`/profile?tab=${tabId}`, { replace: true });
+    };
 
     const tabs = [
         { id: 'personal', label: 'اطلاعات شخصی', icon: '👤' },
@@ -33,6 +60,8 @@ const ProfileLayout = () => {
                 return <ChangePhone user={user} showAlert={showAlert} />;
             case 'deleteAccount':
                 return <DeleteAccount showAlert={showAlert} />;
+            case 'checkout':
+                return <Checkout showAlert={showAlert} onComplete={() => handleTabChange('orders')} />;
             default:
                 return <PersonalInfo user={user} showAlert={showAlert} />;
         }
@@ -71,7 +100,7 @@ const ProfileLayout = () => {
                             {tabs.map((tab) => (
                                 <button
                                     key={tab.id}
-                                    onClick={() => setActiveTab(tab.id)}
+                                    onClick={() => handleTabChange(tab.id)}
                                     className={`px-6 py-3 text-sm font-medium transition-colors flex items-center gap-2
                                         ${activeTab === tab.id
                                             ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50'

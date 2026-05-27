@@ -3,7 +3,9 @@ import { useAuth } from '../../contexts/AuthContext';
 import Dashboard from './Dashboard';
 import ProductsManagement from './ProductsManagement';
 import OrdersManagement from './OrdersManagement';
+import PodcastManagement from './PodcastManagement';
 import AlertMessage from '../Common/AlertMessage';
+import { Podcast } from 'lucide-react';
 
 const AdminLayout = () => {
     const { user, logout } = useAuth();
@@ -13,7 +15,8 @@ const AdminLayout = () => {
     const tabs = [
         { id: 'dashboard', label: 'داشبورد', icon: '📊' },
         { id: 'products', label: 'مدیریت محصولات', icon: '📦' },
-        { id: 'orders', label: 'مدیریت سفارشات', icon: '📋' }
+        { id: 'orders', label: 'مدیریت سفارشات', icon: '📋' },
+        { id: 'podcasts', label: 'مدیریت پادکست‌ها', icon: <Podcast /> }
     ];
 
     const showAlert = (message, type) => {
@@ -29,6 +32,8 @@ const AdminLayout = () => {
                 return <ProductsManagement showAlert={showAlert} />;
             case 'orders':
                 return <OrdersManagement showAlert={showAlert} />;
+            case 'podcasts':
+                return <PodcastManagement showAlert={showAlert} />;
             default:
                 return <Dashboard showAlert={showAlert} />;
         }

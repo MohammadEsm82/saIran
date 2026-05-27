@@ -13,6 +13,8 @@ import Login from './components/Auth/Login';
 import AboutUs from './pages/AboutUs/AboutUs';
 import ContactUs from './pages/ContactUs/ContactUs';
 import ProductsPage from './pages/ProductsPage';
+import PodcastsPage from './pages/PodcastsPage';
+import PodcastDetailPage from './pages/PodcastDetailPage';
 
 import LoadingSpinner from './components/Common/LoadingSpinner';
 
@@ -43,6 +45,8 @@ function AppRoutes() {
         <Route path='/aboutus' element={<AboutUs />} />
         <Route path='/contactus' element={<ContactUs />} />
         <Route path="/products" element={<ProductsPage />} />
+        <Route path="/podcasts" element={<PodcastsPage />} />
+        <Route path="/podcast/:id" element={<PodcastDetailPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile"
           element={

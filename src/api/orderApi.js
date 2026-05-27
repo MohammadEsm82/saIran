@@ -3,7 +3,7 @@ import axiosInstance from './axiosConfig';
 const orderApi = {
     // ثبت سفارش
     createOrder: async () => {
-        const response = await axiosInstance.post('/orders');
+        const response = await axiosInstance.post('/orders/checkout');
         return response.data;
     },
 

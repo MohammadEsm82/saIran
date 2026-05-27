@@ -3,7 +3,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Link } from "react-router";
-import { FaPlay } from "react-icons/fa";
+import { Play } from "lucide-react";
 
 import Carousel from "../../components/Carousel/Carousel";
 import ProductCarousel from "../../components/ProductCarousel/ProductCarousel";
@@ -92,7 +92,7 @@ function HomePage() {
         <div>
           <a href="https://www.aparat.com/v/ddg406e" target="_blank" className={styles.playBtn}>
             <span>
-              <FaPlay/>
+              <Play size={30} />
             </span>
           </a>
           <img className={styles.ourstoryimage} src={ourstoryImage} alt=""/>

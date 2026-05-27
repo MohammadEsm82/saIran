@@ -81,11 +81,11 @@ const ProductsPage = () => {
         setFilteredProducts(filtered);
     };
 
-    const handleAddToCart = async (product, e) => {
-        e.stopPropagation();
+    const handleAddToCart = async (product, count=1, isModal, e) => {
+        !isModal && e.stopPropagation();
         setAddingToCart(prev => ({ ...prev, [product.id]: true }));
         
-        const result = await addToCart(product, 1);
+        const result = await addToCart(product, count);
         
         setTimeout(() => {
             setAddingToCart(prev => ({ ...prev, [product.id]: false }));
@@ -119,9 +119,6 @@ const ProductsPage = () => {
                 {/* Header */}
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-800 text-right">محصولات</h1>
-                    <p className="text-gray-600 text-right mt-2">
-                        {filteredProducts.length} محصول یافت شد
-                    </p>
                 </div>
 
                 {/* Filters Bar */}
@@ -249,7 +246,7 @@ const ProductsPage = () => {
                                             </span>
                                         </div>
                                         <button
-                                            onClick={(e) => handleAddToCart(product, e)}
+                                            onClick={(e) => handleAddToCart(product, 1, false, e)}
                                             disabled={addingToCart[product.id]}
                                             className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors disabled:bg-gray-400 flex items-center gap-2"
                                         >

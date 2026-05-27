@@ -41,6 +41,14 @@ const ProductModal = ({ isOpen, onClose, onSuccess, product, showAlert }) => {
         }
     }, [product]);
 
+    const getImageUrl = (url) => {
+        if (!url) return null;
+        // اگر آدرس با http شروع میشه، همون رو برگردون
+        if (url.startsWith('http')) return url;
+        // در غیر این صورت، به localhost اضافه کن
+        return `http://localhost:3000${url}`;
+    };
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -280,17 +288,20 @@ const ProductModal = ({ isOpen, onClose, onSuccess, product, showAlert }) => {
                         {/* لیست تصاویر */}
                         <div className="flex flex-wrap gap-2 mt-2">
                             {formData.images_url.map((url, index) => (
-                                <div key={index} className="relative bg-gray-100 rounded-lg p-2 flex items-center gap-2">
-                                    <span className="text-xs text-gray-600 truncate max-w-[200px]">
-                                        {url.split('/').pop()}
-                                    </span>
-                                    <button
-                                        type="button"
-                                        onClick={() => removeImage(index)}
-                                        className="text-red-500 hover:text-red-700 text-sm"
-                                    >
-                                        ✕
-                                    </button>
+                                <div className='max-w-[200px] rounded-lg overflow-hidden' key={index}>
+                                    <img src={getImageUrl(url)} />
+                                    <div className="relative bg-gray-100  p-2 flex items-center gap-2">
+                                        <span className="text-xs text-gray-600 truncate max-w-[200px]">
+                                            {url.split('/').pop()}
+                                        </span>
+                                        <button
+                                            type="button"
+                                            onClick={() => removeImage(index)}
+                                            className="text-red-500 hover:text-red-700 text-sm"
+                                            >
+                                            ✕
+                                        </button>
+                                    </div>
                                 </div>
                             ))}
                         </div>

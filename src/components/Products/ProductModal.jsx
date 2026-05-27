@@ -34,9 +34,7 @@ const ProductModal = ({ isOpen, onClose, product, onAddToCart, addingToCart }) =
     };
 
     const handleAddToCart = () => {
-        for (let i = 0; i < quantity; i++) {
-            onAddToCart(product, 1);
-        }
+        onAddToCart(product, quantity, true);
         onClose();
     };
 

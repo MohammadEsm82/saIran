@@ -7,11 +7,13 @@ import logo from "../../assets/images/logo.png";
 import UserContext from "../../contexts/UserContext";
 import { useAuth } from "../../contexts/AuthContext";
 import CartDrawer from "../../components/Cart/CartDrawer";
+import { useCart } from "../../contexts/CartContext";
 
 const NavFooter = () => {
   const { isAdmin } = useAuth();
   const [user, setUser] = useState("");
   const [token, setToken] = useState("");
+  const { cartCount } = useCart();
 
   useEffect(() => {
     
@@ -39,7 +41,7 @@ const NavFooter = () => {
               <Link to={"/products"}>محصولات</Link>
               {/* <Link to={"#"}>خدمات</Link>
               <Link to={"#"}>تحقیق و توسعه</Link> */}
-              <Link to={"#"}>اتاق خبر</Link>
+              <Link to={"/podcasts"}>پادکست‌ها</Link>
               <Link to={"/contactus"}>تماس با ما</Link>
               {user?.fname ?
                 <Link to={"/profile"}>{user.fname}</Link>
@@ -49,7 +51,9 @@ const NavFooter = () => {
               {isAdmin && 
                 <Link to={"/admin"}>پنل ادمین</Link>
               }
-              <CartDrawer />
+              {!!cartCount &&
+                <CartDrawer />
+              }
             </div>
 
             <Link to={"/"}>

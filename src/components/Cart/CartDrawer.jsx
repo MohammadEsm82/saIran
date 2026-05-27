@@ -23,10 +23,10 @@ const CartDrawer = () => {
         
         setCheckoutLoading(true);
         try {
+            setIsOpen(false);
             navigate('/profile?tab=checkout');
         } finally {
             setCheckoutLoading(false);
-            setIsOpen(false);
         }
     };
     

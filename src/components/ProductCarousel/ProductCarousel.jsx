@@ -7,11 +7,7 @@ import cheshm from '../../assets/images/cheshm.png';
 import implant from '../../assets/images/implant.webp';
 import watch from '../../assets/images/watch.png';
 
-import { TbHeartbeat } from "react-icons/tb";
-import { FaDisplay } from "react-icons/fa6";
-import { SlEye } from "react-icons/sl";
-import { TbRazor } from "react-icons/tb";
-import { MdOutlineWatch } from "react-icons/md";
+import { Accessibility, Eye, HeartPulse, Monitor, ScanHeart } from 'lucide-react';
 
 const products = [
     {
@@ -19,35 +15,35 @@ const products = [
         name: 'Defibrillator / Monitor',
         model: '5DM RELIVE',
         image: shockDevice,
-        icon: <TbHeartbeat />
+        icon: <HeartPulse size={30} />
     },
     {
         title: 'اندوسکوپی',
         name: 'Endoscopy / Laparoscopy',
         model: 'ENDOSET SYSTEMS',
         image: andoscopy,
-        icon: <FaDisplay />
+        icon: <Monitor size={30} />
     },
     {
         title: 'چشم پزشکی',
         name: 'Ophthalmic Specialized Equipment',
         model: 'Slit Lamp | YAG Laser',
         image: cheshm,
-        icon: <SlEye />
+        icon: <Eye size={30} />
     },
     {
         title: 'ارتوپدی',
         name: 'Arthroplasty',
         model: 'TOTAL KNEE KneeTA®',
         image: implant,
-        icon: <TbRazor />
+        icon: <Accessibility size={30} />
     },
     {
         title: 'سلامت هوشمند',
         name: 'HealthGuard Intelliwatch S1',
         model: 'Galaxy watch5',
         image: watch,
-        icon: <MdOutlineWatch />
+        icon: <ScanHeart size={30} />
     },
 ]
 
