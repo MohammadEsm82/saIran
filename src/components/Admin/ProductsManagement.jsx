@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import adminApi from '../../api/adminApi';
 import LoadingSpinner from '../Common/LoadingSpinner';
 import ProductModal from './ProductModal';
+import { Pencil, Star, Trash2 } from 'lucide-react';
 
 const ProductsManagement = ({ showAlert }) => {
     const [products, setProducts] = useState([]);
@@ -145,13 +146,13 @@ const ProductsManagement = ({ showAlert }) => {
                                         <td className="px-4 py-3 text-sm">{formatPrice(product.price)}</td>
                                         <td className="px-4 py-3 text-sm">
                                             <span className="flex items-center gap-1">
-                                                {product.score} ⭐
+                                                {product.score} <Star />
                                             </span>
                                         </td>
                                         <td className="px-4 py-3 text-sm">
                                             <span className={`px-2 py-1 rounded-full text-xs ${
-                                                product.stock <= 5 
-                                                    ? 'bg-red-100 text-red-700' 
+                                                product.stock <= 5
+                                                    ? 'bg-red-100 text-red-700'
                                                     : 'bg-green-100 text-green-700'
                                             }`}>
                                                 {product.stock} عدد
@@ -163,13 +164,13 @@ const ProductsManagement = ({ showAlert }) => {
                                                     onClick={() => openEditModal(product)}
                                                     className="text-blue-600 hover:text-blue-800"
                                                 >
-                                                    ✏️ ویرایش
+                                                   <Pencil /> ویرایش
                                                 </button>
                                                 <button
                                                     onClick={() => handleDelete(product.id, product.pname)}
                                                     className="text-red-600 hover:text-red-800"
                                                 >
-                                                    🗑️ حذف
+                                                    <Trash2 /> حذف
                                                 </button>
                                             </div>
                                         </td>

@@ -35,6 +35,10 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.hamMenu {
+  display: none;
+}
+
 .outlet {
   min-height: calc(100vh - 400px);
   margin-top: 100px;
@@ -43,7 +47,6 @@
   position: relative;
   background-color: var(--foreground);
   color: var(--background);
-  height: 300px;
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -51,7 +54,7 @@
 
 .footercontent{
   max-width: var(--max-width);
-  padding: 0 30px;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   margin: 50px auto;
@@ -95,4 +98,48 @@
 .copyright {
   position: relative;
   z-index: 1;
+}
+
+
+
+
+@media (max-width: 800px) {
+  .footercontent {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 20px;
+  }
+}
+@media (max-width: 1350px) {
+  .navLinks {
+    display: none;
+  }
+  .hamMenu {
+    display: unset;
+  }
+  .mobileNav {
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    z-index: 1000000;
+    background-color: white;
+    border-left: 1px solid grey;
+    height: 100dvh;
+    max-width: 50vw;
+    min-width:fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 20px 20px 100px;
+    position: relative;
+  }
+  .mobileNav a {
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgrey;
+  }
+  .closeNav {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
 }

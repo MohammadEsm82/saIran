@@ -14,9 +14,9 @@ import image2 from "../../assets/images/2.jpg";
 import image3 from "../../assets/images/3.webp";
 import ourstoryImage from "../../assets/images/ourstory.jpg";
 import serviceImage from "../../assets/images/serviceImage.jpg";
-import newsImage1 from "../../assets/images/news1.jpg";
-import newsImage2 from "../../assets/images/news2.jpg";
-import newsImage3 from "../../assets/images/news3.jpg";
+// import newsImage1 from "../../assets/images/news1.jpg";
+// import newsImage2 from "../../assets/images/news2.jpg";
+// import newsImage3 from "../../assets/images/news3.jpg";
 
 function HomePage() {
   const serviceCardsRef = useRef(null);
@@ -103,7 +103,7 @@ function HomePage() {
       <div className={styles.services}>
         <h3>خدمات | services</h3>
         <p>مشاوره،کالیبراسیون،آموزش و پشتیبانی تجهیزات پزشکی با استانداردهای بین‌المللی</p>
-        <a href="#">توضیحات بیشتر</a>
+        <a href="/aboutus">توضیحات بیشتر</a>
         <div ref={serviceCardsRef} className={styles.serviceCards}>
           <div className={styles.serviceCard}>
             <div>
@@ -137,7 +137,7 @@ function HomePage() {
       </div>
 
       
-      <div className={styles.newsRoom}>
+      {/* <div className={styles.newsRoom}>
         <h3>اتاق خبر | Newsroom</h3>
         <div className={styles.newsGrid}>
           <div className={styles.newsCard}>
@@ -169,7 +169,7 @@ function HomePage() {
           </div>
         </div>
         <a href="#" className={styles.archiveLink}>آرشیو خبرها</a>
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -4,6 +4,9 @@ import { useAuth } from '../../contexts/AuthContext';
 import LoadingSpinner from '../Common/LoadingSpinner';
 import { useNavigate } from 'react-router';
 
+
+import { CameraIcon, ShoppingCart } from 'lucide-react';
+
 const CartDrawer = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [checkoutLoading, setCheckoutLoading] = useState(false);
@@ -20,7 +23,7 @@ const CartDrawer = () => {
             navigate('/login');
             return;
         }
-        
+
         setCheckoutLoading(true);
         try {
             setIsOpen(false);
@@ -29,7 +32,7 @@ const CartDrawer = () => {
             setCheckoutLoading(false);
         }
     };
-    
+
     return (
         <>
             {/* Cart Button */}
@@ -47,8 +50,8 @@ const CartDrawer = () => {
 
             {/* Drawer Overlay */}
             {isOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 z-50" onClick={() => setIsOpen(false)}>
-                    <div className="fixed left-0 top-0 h-full w-full max-w-md bg-white shadow-xl z-50" onClick={(e) => e.stopPropagation()}>
+                <div className="fixed inset-0 bg-black bg-opacity-50" style={{ zIndex: 99999}} onClick={() => setIsOpen(false)}>
+                    <div className="fixed left-0 top-0 h-full w-full max-w-md bg-white shadow-xl" style={{ zIndex: 99999}} onClick={(e) => e.stopPropagation()}>
                         {/* Header */}
                         <div className="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
                             <button onClick={() => setIsOpen(false)} className="text-gray-500 text-2xl">
@@ -66,7 +69,7 @@ const CartDrawer = () => {
                                 </div>
                             ) : cartItems.length === 0 ? (
                                 <div className="text-center py-12">
-                                    <div className="text-6xl mb-4">🛒</div>
+                                    <div className="text-6xl mb-4"><ShoppingCart /></div>
                                     <p className="text-gray-500">سبد خرید شما خالی است</p>
                                 </div>
                             ) : (
@@ -84,18 +87,18 @@ const CartDrawer = () => {
                                                         />
                                                     ) : (
                                                         <div className="w-full h-full flex items-center justify-center text-gray-400">
-                                                            📷
+                                                            <CameraIcon/>
                                                         </div>
                                                     )}
                                                 </div>
-                                                
+
                                                 {/* Product Info */}
                                                 <div className="flex-1 text-right">
                                                     <h3 className="font-medium text-gray-800">{item.name}</h3>
                                                     <p className="text-sm text-blue-600 font-bold mt-1">
                                                         {formatPrice(item.price)}
                                                     </p>
-                                                    
+
                                                     {/* Quantity Controls */}
                                                     <div className="flex items-center justify-end gap-2 mt-2">
                                                         <button
@@ -145,7 +148,7 @@ const CartDrawer = () => {
                                         </>
                                     ) : (
                                         <>
-                                            <span>💰</span>
+
                                             <span>ثبت سفارش</span>
                                         </>
                                     )}

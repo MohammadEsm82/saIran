@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import adminApi from '../../api/adminApi';
 import LoadingSpinner from '../Common/LoadingSpinner';
+import { Upload } from 'lucide-react';
 
 const ProductModal = ({ isOpen, onClose, onSuccess, product, showAlert }) => {
     const [loading, setLoading] = useState(false);
@@ -175,7 +176,7 @@ const ProductModal = ({ isOpen, onClose, onSuccess, product, showAlert }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4" style={{ zIndex:99999 }}>
             <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
                     <h3 className="text-xl font-bold">
@@ -271,7 +272,7 @@ const ProductModal = ({ isOpen, onClose, onSuccess, product, showAlert }) => {
                         {/* دکمه آپلود */}
                         <div className="mb-2">
                             <label className="inline-block px-4 py-2 bg-blue-500 text-white rounded-lg cursor-pointer hover:bg-blue-600">
-                                {uploadingImage ? <LoadingSpinner size="sm" /> : '📤 انتخاب و آپلود عکس'}
+                                {uploadingImage ? <LoadingSpinner size="sm" /> :  `انتخاب و آپلود عکس `}
                                 <input
                                     type="file"
                                     accept="image/*"

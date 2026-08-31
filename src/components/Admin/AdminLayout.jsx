@@ -5,7 +5,8 @@ import ProductsManagement from './ProductsManagement';
 import OrdersManagement from './OrdersManagement';
 import PodcastManagement from './PodcastManagement';
 import AlertMessage from '../Common/AlertMessage';
-import { Podcast } from 'lucide-react';
+import { Ban, LayoutDashboard, NotebookPen, Package, Podcast } from 'lucide-react';
+
 
 const AdminLayout = () => {
     const { user, logout } = useAuth();
@@ -13,9 +14,9 @@ const AdminLayout = () => {
     const [alert, setAlert] = useState({ message: '', type: '' });
 
     const tabs = [
-        { id: 'dashboard', label: 'داشبورد', icon: '📊' },
-        { id: 'products', label: 'مدیریت محصولات', icon: '📦' },
-        { id: 'orders', label: 'مدیریت سفارشات', icon: '📋' },
+        { id: 'dashboard', label: 'داشبورد', icon: <LayoutDashboard /> },
+        { id: 'products', label: 'مدیریت محصولات', icon: <Package/> },
+        { id: 'orders', label: 'مدیریت سفارشات', icon: <NotebookPen /> },
         { id: 'podcasts', label: 'مدیریت پادکست‌ها', icon: <Podcast /> }
     ];
 
@@ -43,7 +44,7 @@ const AdminLayout = () => {
         return (
             <div className="min-h-screen bg-gray-100 flex items-center justify-center">
                 <div className="bg-white rounded-lg shadow-md p-8 text-center">
-                    <div className="text-6xl mb-4">⛔</div>
+                    <div className="text-6xl mb-4"><Ban color='red' /></div>
                     <h2 className="text-2xl font-bold text-red-600 mb-2">دسترسی غیرمجاز</h2>
                     <p className="text-gray-600">شما به این صفحه دسترسی ندارید</p>
                 </div>
@@ -55,7 +56,7 @@ const AdminLayout = () => {
         <div className="min-h-screen bg-gray-100">
             {/* Header */}
             <header className="bg-white shadow-md">
-                <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+                <div className="mx-auto px-4 py-4 flex justify-between items-center" style={{maxWidth:"var(--max-width)"}}>
                     <div>
                         <h1 className="text-2xl font-bold text-gray-800">پنل مدیریت</h1>
                         <p className="text-sm text-gray-600">
@@ -71,7 +72,7 @@ const AdminLayout = () => {
                 </div>
             </header>
 
-            <div className="max-w-7xl mx-auto px-4 py-6">
+            <div className="mx-auto px-4 py-6" style={{maxWidth:"var(--max-width)"}}>
                 {alert.message && (
                     <AlertMessage message={alert.message} type={alert.type} />
                 )}

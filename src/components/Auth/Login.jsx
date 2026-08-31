@@ -163,7 +163,7 @@ const Login = () => {
                                         value={formData.mail}
                                         onChange={(e) => setFormData({...formData, mail: e.target.value})}
                                         className="w-full px-4 py-2 border border-gray-300 rounded-lg text-right"
-                                        placeholder="ali@example.com"
+                                        placeholder="mehdimosleh@example.com"
                                     />
                                 </div>
                             </div>

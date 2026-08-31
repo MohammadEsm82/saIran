@@ -2,6 +2,7 @@ import styles from "./Carousel.module.css";
 
 import defaultImg from "../../assets/images/1.webp"
 import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Carousel = (props) => {
   const {
@@ -37,7 +38,7 @@ const Carousel = (props) => {
       {slides.map((slide, index)=> (
         <div key={index} className={`${styles.slide} ${current==index?styles.activeSlide:""}`}>
           <img src={slide.image} alt={slide.title}/>
-          <div>
+          <div style={{maxWidth:"var(--max-width)"}}>
             <h2>{slide.title}</h2>
             <p>{slide.desc}</p>
           </div>
@@ -45,12 +46,12 @@ const Carousel = (props) => {
       ))}
       <div className={styles.leftA}>
         <div onClick={()=>clickHandler("-")}>
-          <span>{"->"}</span>
+          <ChevronLeft />
         </div>
       </div>
       <div className={styles.rightA}>
         <div onClick={()=>clickHandler("+")}>
-          <span>{"<-"}</span>
+          <ChevronRight />
         </div>
       </div>
     </div>

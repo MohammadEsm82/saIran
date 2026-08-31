@@ -7,6 +7,7 @@ import OrdersList from './OrdersList';
 import DeleteAccount from './DeleteAccount';
 import Checkout from './Checkout';
 import AlertMessage from '../Common/AlertMessage';
+import { Package, Smartphone, Trash2, User } from 'lucide-react';
 
 const ProfileLayout = () => {
     const { user, logout } = useAuth();
@@ -39,10 +40,10 @@ const ProfileLayout = () => {
     };
 
     const tabs = [
-        { id: 'personal', label: 'اطلاعات شخصی', icon: '👤' },
-        { id: 'orders', label: 'سفارشات', icon: '📦' },
-        { id: 'changePhone', label: 'تغییر شماره', icon: '📱' },
-        { id: 'deleteAccount', label: 'حذف حساب', icon: '🗑️' }
+        { id: 'personal', label: 'اطلاعات شخصی', icon:<User/>  },
+        { id: 'orders', label: 'سفارشات', icon: <Package/> },
+        { id: 'changePhone', label: 'تغییر شماره', icon: <Smartphone /> },
+        { id: 'deleteAccount', label: 'حذف حساب', icon:  <Trash2 /> }
     ];
 
     const showAlert = (message, type) => {
@@ -69,7 +70,7 @@ const ProfileLayout = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 py-8">
-            <div className="max-w-6xl mx-auto px-4">
+            <div className="mx-auto px-4" style={{maxWidth:"var(--max-width)"}}>
                 {/* Header */}
                 <div className="bg-white rounded-lg shadow-md p-6 mb-6">
                     <div className="flex justify-between items-center">

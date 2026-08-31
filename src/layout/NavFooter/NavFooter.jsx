@@ -8,15 +8,17 @@ import UserContext from "../../contexts/UserContext";
 import { useAuth } from "../../contexts/AuthContext";
 import CartDrawer from "../../components/Cart/CartDrawer";
 import { useCart } from "../../contexts/CartContext";
+import { Menu, X } from "lucide-react";
 
 const NavFooter = () => {
   const { isAdmin } = useAuth();
   const [user, setUser] = useState("");
   const [token, setToken] = useState("");
   const { cartCount } = useCart();
+  const [showMobileNav, setShowMobileNav] = useState(false);
 
   useEffect(() => {
-    
+
     const userLocal = localStorage.getItem("user");
     const tokenLocal = localStorage.getItem("token");
 
@@ -33,40 +35,64 @@ const NavFooter = () => {
 
   return (
     <div className={styles.main}>
-      <nav className={styles.nav}> 
+      {showMobileNav &&
+        <div className={styles.mobileNav}>
+          <Link onClick={() => setShowMobileNav(false)} to={"/"}>صفحه اصلی</Link>
+          <Link onClick={() => setShowMobileNav(false)} to={"/aboutus"}>درباره ما</Link>
+          <Link onClick={() => setShowMobileNav(false)} to={"/products"}>محصولات</Link>
+          {/* <Link to={"#"}>خدمات</Link>
+          <Link to={"#"}>تحقیق و توسعه</Link> */}
+          <Link onClick={() => setShowMobileNav(false)} to={"/podcasts"}>پادکست‌ها</Link>
+          <Link onClick={() => setShowMobileNav(false)} to={"/contactus"}>تماس با ما</Link>
+          {user?.fname ?
+            <Link onClick={() => setShowMobileNav(false)} to={"/profile"}>{user.fname}</Link>
+            :
+            <Link onClick={() => setShowMobileNav(false)} to={"/login"}>ورود/ثبت‌نام</Link>
+          }
+          {isAdmin &&
+            <Link onClick={() => setShowMobileNav(false)} to={"/admin"}>پنل ادمین</Link>
+          }
+          <X className={styles.closeNav} color="red" size={30} onClick={() => setShowMobileNav(false)}/>
+        </div>
+      }
+      <nav className={styles.nav}>
         <div className={styles.maxwidth}>
-            <div className={styles.navLinks}>
-              <Link to={"/"}>صفحه اصلی</Link>
-              <Link to={"/aboutus"}>درباره ما</Link>
-              <Link to={"/products"}>محصولات</Link>
-              {/* <Link to={"#"}>خدمات</Link>
-              <Link to={"#"}>تحقیق و توسعه</Link> */}
-              <Link to={"/podcasts"}>پادکست‌ها</Link>
-              <Link to={"/contactus"}>تماس با ما</Link>
-              {user?.fname ?
-                <Link to={"/profile"}>{user.fname}</Link>
-              :
-                <Link to={"/login"}>ورود/ثبت‌نام</Link>
-              }
-              {isAdmin && 
-                <Link to={"/admin"}>پنل ادمین</Link>
-              }
-              {!!cartCount &&
-                <CartDrawer />
-              }
-            </div>
+          <div className={styles.navLinks}>
+            <Link to={"/"}>صفحه اصلی</Link>
+            <Link to={"/aboutus"}>درباره ما</Link>
+            <Link to={"/products"}>محصولات</Link>
+            {/* <Link to={"#"}>خدمات</Link>
+            <Link to={"#"}>تحقیق و توسعه</Link> */}
+            <Link to={"/podcasts"}>پادکست‌ها</Link>
+            <Link to={"/contactus"}>تماس با ما</Link>
+            {user?.fname ?
+              <Link to={"/profile"}>{user.fname}</Link>
+            :
+              <Link to={"/login"}>ورود/ثبت‌نام</Link>
+            }
+            {isAdmin &&
+              <Link to={"/admin"}>پنل ادمین</Link>
+            }
+            {!!cartCount &&
+              <CartDrawer />
+            }
+          </div>
+          <Menu className={styles.hamMenu} size={40} onClick={() => setShowMobileNav(true)}/>
 
-            <Link to={"/"}>
-              <img src={logo} alt=""/>
-            </Link>
+          <Link to={"/"}>
+            <img src={logo} alt=""/>
+          </Link>
         </div>
       </nav>
+
 
       <UserContext.Provider value={{ user, token }}>
         <div className={styles.outlet}>
           <Outlet />
         </div>
       </UserContext.Provider>
+
+
 
       <footer className={styles.footer}>
 
@@ -116,8 +142,8 @@ const NavFooter = () => {
                 </p>
 
           </div>
-          
-         
+
+
 
         </div>
 
@@ -125,7 +151,7 @@ const NavFooter = () => {
           <p > تمام حقوق نزد گروه صنعت تجهیزات پزشکی ما محفوظ است.</p>
 
         </div>
-        
+
 
       </footer>
     </div>

@@ -37,14 +37,16 @@ const ContactUs = () => {
         </div>
       </div>
 
-      <iframe
-        title="map-iframe"
-        src="https://neshan.org/maps/iframe/places/_bQmZqIxOWIn#c35.640-51.393-16z-0p/35.639895917906244/51.390443560866544"
-        width="100%"
-        height="700"
-        allowFullScreen
-        loading="lazy"
-      />
+      <div style={{width: "100%", padding: "0 20px", maxWidth:"var(--max-width)"}}>
+        <iframe
+          title="map-iframe"
+          src="https://neshan.org/maps/iframe/places/_bQmZqIxOWIn#c35.640-51.393-16z-0p/35.639895917906244/51.390443560866544"
+          width="100%"
+          height="700"
+          allowFullScreen
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 };

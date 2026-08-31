@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LoadingSpinner from '../Common/LoadingSpinner';
+import { CameraIcon, Star, StarHalf } from 'lucide-react';
 
 const ProductModal = ({ isOpen, onClose, product, onAddToCart, addingToCart }) => {
     const [activeImage, setActiveImage] = useState(0);
@@ -17,20 +18,17 @@ const ProductModal = ({ isOpen, onClose, product, onAddToCart, addingToCart }) =
     };
 
     const getScoreStars = (score) => {
-        const fullStars = Math.floor(score);
-        const hasHalfStar = score % 1 >= 0.5;
         const stars = [];
-        
-        for (let i = 1; i <= 5; i++) {
-            if (i <= fullStars) {
-                stars.push('⭐');
-            } else if (i === fullStars + 1 && hasHalfStar) {
-                stars.push('½⭐');
-            } else {
-                stars.push('☆');
-            }
+        const trueScore = score / 2;
+
+        const fullCount = Math.floor(trueScore)
+        for (let i = 1; i <= fullCount; i++) {
+            stars.push(<Star color='#ffe600' fill='#ffe600' />);
         }
-        return stars.join('');
+
+        if (trueScore % 1 != 0) stars.push(<StarHalf color='#ffe600' fill='#ffe600'/>)
+
+        return stars;
     };
 
     const handleAddToCart = () => {
@@ -39,7 +37,7 @@ const ProductModal = ({ isOpen, onClose, product, onAddToCart, addingToCart }) =
     };
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={onClose}>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4" style={{ zIndex: 99999}} onClick={onClose}>
             <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
                 <div className="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
                     <h3 className="text-xl font-bold text-right">جزئیات محصول</h3>
@@ -63,10 +61,10 @@ const ProductModal = ({ isOpen, onClose, product, onAddToCart, addingToCart }) =
                                         }}
                                     />
                                 ) : (
-                                    <div className="text-gray-400 text-6xl">📷</div>
+                                    <div className="text-gray-400 text-6xl"><CameraIcon/></div>
                                 )}
                             </div>
-                            
+
                             {product.images_url && product.images_url.length > 1 && (
                                 <div className="flex gap-2 justify-center">
                                     {product.images_url.map((url, index) => (
@@ -91,11 +89,11 @@ const ProductModal = ({ isOpen, onClose, product, onAddToCart, addingToCart }) =
                         {/* Product Details */}
                         <div className="text-right">
                             <h2 className="text-2xl font-bold text-gray-800 mb-2">{product.pname}</h2>
-                            
+
                             {/* Score */}
                             {product.score > 0 && (
                                 <div className="flex items-center gap-1 mb-4">
-                                    <span className="text-yellow-500">{getScoreStars(product.score)}</span>
+                                    <span className="flex flex-row-reverse items-center text-yellow-500">{getScoreStars(product.score).map((star, i) => <React.Fragment key={i}>{star}</React.Fragment>)}</span>
                                     <span className="text-gray-600">({product.score} از 10)</span>
                                 </div>
                             )}
@@ -175,7 +173,7 @@ const ProductModal = ({ isOpen, onClose, product, onAddToCart, addingToCart }) =
                                     </>
                                 ) : (
                                     <>
-                                        <span>🛒</span>
+
                                         <span>افزودن به سبد خرید</span>
                                     </>
                                 )}

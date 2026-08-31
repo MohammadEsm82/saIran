@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import adminApi from '../../api/adminApi';
 import LoadingSpinner from '../Common/LoadingSpinner';
+import { ChartNoAxesCombined, DollarSign, ListOrdered, ShoppingBasket, Timer, TriangleAlert, User } from 'lucide-react';
 
 const Dashboard = ({ showAlert }) => {
     const [stats, setStats] = useState(null);
@@ -36,12 +37,12 @@ const Dashboard = ({ showAlert }) => {
     }
 
     const statCards = [
-        { title: 'کل محصولات', value: stats?.totalProducts || 0, icon: '📦', color: 'bg-blue-500' },
-        { title: 'کل کاربران', value: stats?.totalUsers || 0, icon: '👥', color: 'bg-green-500' },
-        { title: 'کل سفارشات', value: stats?.totalOrders || 0, icon: '📋', color: 'bg-purple-500' },
-        { title: 'کل فروش', value: formatPrice(stats?.totalSales || 0), icon: '💰', color: 'bg-yellow-500' },
-        { title: 'سفارشات در انتظار', value: stats?.processingOrders || 0, icon: '⏳', color: 'bg-orange-500' },
-        { title: 'فروش ماه جاری', value: formatPrice(stats?.monthlySales || 0), icon: '📈', color: 'bg-teal-500' }
+        { title: 'کل محصولات', value: stats?.totalProducts || 0, icon: <ShoppingBasket size={38} />, color: 'bg-blue-500' },
+        { title: 'کل کاربران', value: stats?.totalUsers || 0, icon: <User size={38}/>, color: 'bg-green-500' },
+        { title: 'کل سفارشات', value: stats?.totalOrders || 0, icon: <ListOrdered size={38}/>, color: 'bg-purple-500' },
+        { title: 'کل فروش', value: formatPrice(stats?.totalSales || 0), icon: <DollarSign size={38}/>, color: 'bg-yellow-500' },
+        { title: 'سفارشات در انتظار', value: stats?.processingOrders || 0, icon: <Timer size={38}/>, color: 'bg-orange-500' },
+        { title: 'فروش ماه جاری', value: formatPrice(stats?.monthlySales || 0), icon: <ChartNoAxesCombined size={38} />, color: 'bg-teal-500' }
     ];
 
     return (
@@ -68,7 +69,7 @@ const Dashboard = ({ showAlert }) => {
             {/* Low Stock Alert */}
             {stats?.lowStockProducts?.length > 0 && (
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                    <h3 className="text-lg font-bold text-yellow-800 mb-3 text-right">⚠️ هشدار موجودی کم</h3>
+                    <h3 className="flex gap-2 items-center text-lg font-bold text-yellow-800 mb-3 text-right"><TriangleAlert color='orange' /> هشدار موجودی کم</h3>
                     <div className="space-y-2">
                         {stats.lowStockProducts.map(product => (
                             <div key={product.id} className="flex justify-between items-center bg-white rounded p-3">

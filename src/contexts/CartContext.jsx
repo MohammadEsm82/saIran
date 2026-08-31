@@ -72,7 +72,7 @@ export const CartProvider = ({ children }) => {
 
     // همگام‌سازی سبد خرید آفلاین با سرور (فقط یک بار بعد از ورود)
     const syncOfflineCartToServer = async () => {
-        // اگر قبلاً همگام‌سازی شده یا در حال همگام‌سازی هستیم، انجام نده
+        // اگر قبلاً همگام‌سازی شده یا در حال همگام‌سازی هستیم انجام نده
         if (synced || syncingRef.current || !isAuthenticated) return false;
         
         const offlineCart = localStorage.getItem('offlineCart');

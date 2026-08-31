@@ -3,6 +3,7 @@ import productApi from '../api/productApi';
 import { useCart } from '../contexts/CartContext';
 import ProductModal from '../components/Products/ProductModal';
 import LoadingSpinner from '../components/Common/LoadingSpinner';
+import { ShoppingCart, Star } from 'lucide-react';
 
 const ProductsPage = () => {
     const [products, setProducts] = useState([]);
@@ -14,7 +15,7 @@ const ProductsPage = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [addingToCart, setAddingToCart] = useState({});
-    
+
     const { addToCart } = useCart();
 
     useEffect(() => {
@@ -84,15 +85,15 @@ const ProductsPage = () => {
     const handleAddToCart = async (product, count=1, isModal, e) => {
         !isModal && e.stopPropagation();
         setAddingToCart(prev => ({ ...prev, [product.id]: true }));
-        
+
         const result = await addToCart(product, count);
-        
+
         setTimeout(() => {
             setAddingToCart(prev => ({ ...prev, [product.id]: false }));
         }, 500);
-        
+
         if (result.success) {
-            // میتونید یه نوتیفیکیشن نشون بدید
+            //
         }
     };
 
@@ -115,7 +116,7 @@ const ProductsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 py-8">
-            <div className="max-w-7xl mx-auto px-4">
+            <div className="mx-auto px-4" style={{maxWidth:"var(--max-width)"}}>
                 {/* Header */}
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-800 text-right">محصولات</h1>
@@ -179,7 +180,7 @@ const ProductsPage = () => {
                 {/* Products Grid */}
                 {filteredProducts.length === 0 ? (
                     <div className="bg-white rounded-lg shadow-md p-12 text-center">
-                        <div className="text-6xl mb-4">🔍</div>
+                        <div className="text-6xl mb-4"></div>
                         <h3 className="text-xl font-semibold text-gray-700">محصولی یافت نشد</h3>
                         <p className="text-gray-500 mt-2">لطفاً فیلترهای جستجو را تغییر دهید</p>
                     </div>
@@ -204,15 +205,15 @@ const ProductsPage = () => {
                                         />
                                     ) : (
                                         <div className="w-full h-full flex items-center justify-center text-gray-400">
-                                            📷 بدون تصویر
+                                             بدون تصویر
                                         </div>
                                     )}
-                                    
+
                                     {/* Score Badge */}
                                     {product.score > 0 && (
                                         <div className="absolute top-2 left-2 bg-yellow-500 text-white px-2 py-1 rounded-md text-sm flex items-center gap-1">
                                             <span>{product.score}</span>
-                                            <span>⭐</span>
+                                            <span><Star color="#fae500" /></span>
                                         </div>
                                     )}
                                 </div>
@@ -222,7 +223,7 @@ const ProductsPage = () => {
                                     <h3 className="font-bold text-lg text-gray-800 mb-2 line-clamp-1">
                                         {product.pname}
                                     </h3>
-                                    
+
                                     <p className="text-gray-600 text-sm mb-3 line-clamp-2 h-10">
                                         {product.description || 'توضیحاتی برای این محصول وجود ندارد'}
                                     </p>
@@ -257,7 +258,7 @@ const ProductsPage = () => {
                                                 </>
                                             ) : (
                                                 <>
-                                                    <span>🛒</span>
+                                                    <span><ShoppingCart /></span>
                                                     <span>افزودن به سبد</span>
                                                 </>
                                             )}

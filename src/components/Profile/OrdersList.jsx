@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import orderApi from '../../api/orderApi';
 import productApi from '../../api/productApi';
 import LoadingSpinner from '../Common/LoadingSpinner';
+import { PackageIcon } from 'lucide-react';
 
 const OrdersList = ({ showAlert }) => {
     const [orders, setOrders] = useState([]);
@@ -94,7 +95,7 @@ const OrdersList = ({ showAlert }) => {
     if (orders.length === 0) {
         return (
             <div className="text-center py-12">
-                <div className="text-6xl mb-4">📦</div>
+                <div className="text-6xl mb-4"><PackageIcon/></div>
                 <h3 className="text-xl font-semibold text-gray-700 mb-2">سفارشی وجود ندارد</h3>
                 <p className="text-gray-500">شما هنوز سفارشی ثبت نکرده‌اید</p>
             </div>

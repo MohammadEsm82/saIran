@@ -15,7 +15,7 @@ const LoadingSpinner = ({ size = 'md', fullScreen = false }) => {
 
     if (fullScreen) {
         return (
-            <div className="fixed inset-0 bg-white bg-opacity-75 flex justify-center items-center z-50">
+            <div className="fixed inset-0 bg-white bg-opacity-75 flex justify-center items-center" style={{ zIndex: 99999}}>
                 {spinner}
             </div>
         );

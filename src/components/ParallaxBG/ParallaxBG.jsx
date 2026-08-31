@@ -35,7 +35,7 @@ const ParallaxBG = () => {
       <div className={styles.maxWidth}>
         <h3>رویدادها و نمایشگاه ها</h3>
         <p>جایی که نوآوری با جهان ملاقات می‌کند</p>
-        <a href="#">آخرین رویدادها</a>
+        <a href="/products">نگاهی به محصولات </a>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { useCart } from '../../contexts/CartContext';
 import orderApi from '../../api/orderApi';
 import LoadingSpinner from '../Common/LoadingSpinner';
+import { ShoppingBasket } from 'lucide-react';
 
 const Checkout = ({ showAlert, onComplete }) => {
     const navigate = useNavigate();
@@ -69,7 +70,7 @@ const Checkout = ({ showAlert, onComplete }) => {
     if (cartItems.length === 0) {
         return (
             <div className="text-center py-12">
-                <div className="text-6xl mb-4">🛒</div>
+                <div className="text-6xl mb-4"><ShoppingBasket/></div>
                 <h3 className="text-xl font-semibold text-gray-700 mb-2">سبد خرید خالی است</h3>
                 <p className="text-gray-500">لطفاً ابتدا محصولاتی را به سبد خرید اضافه کنید</p>
                 <button
@@ -127,7 +128,7 @@ const Checkout = ({ showAlert, onComplete }) => {
                         </>
                     ) : (
                         <>
-                            <span>✅</span>
+                            <span></span>
                             <span>تایید و ثبت سفارش</span>
                         </>
                     )}
@@ -143,7 +144,7 @@ const Checkout = ({ showAlert, onComplete }) => {
             {/* Info Note */}
             <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4 text-right">
                 <p className="text-sm text-blue-800">
-                    📝 پس از ثبت سفارش، وضعیت آن در بخش "سفارشات" قابل پیگیری است.
+                     پس از ثبت سفارش، وضعیت آن در بخش "سفارشات" قابل پیگیری است.
                     در صورت نیاز، کارشناسان ما با شما تماس خواهند گرفت.
                 </p>
             </div>

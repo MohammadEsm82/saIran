@@ -142,7 +142,7 @@ const PodcastModal = ({ isOpen, onClose, onSuccess, podcast, showAlert }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4" style={{ zIndex:99999 }} >
             <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
                     <h3 className="text-xl font-bold">
@@ -209,12 +209,12 @@ const PodcastModal = ({ isOpen, onClose, onSuccess, podcast, showAlert }) => {
                             name="tags"
                             value={formData.tags}
                             onChange={handleChange}
-                            placeholder="react, javascript, frontend"
+                            placeholder="علمی, پربازدید, جدیدترین"
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg text-left"
                             dir="ltr"
                         />
                         <p className="text-xs text-gray-500 mt-1 text-right">
-                            مثال: react, nodejs, backend
+                            مثال: جدیدترین, علمی, پربازدید
                         </p>
                     </div>
 
@@ -225,7 +225,7 @@ const PodcastModal = ({ isOpen, onClose, onSuccess, podcast, showAlert }) => {
                         </label>
                         <div className="flex gap-2">
                             <label className="flex-1 inline-block px-4 py-2 bg-blue-500 text-white rounded-lg cursor-pointer hover:bg-blue-600 text-center">
-                                {uploadingAudio ? <LoadingSpinner size="sm" /> : '📤 آپلود فایل صوتی'}
+                                {uploadingAudio ? <LoadingSpinner size="sm" /> : ' آپلود فایل صوتی'}
                                 <input
                                     type="file"
                                     accept="audio/*"
@@ -252,7 +252,7 @@ const PodcastModal = ({ isOpen, onClose, onSuccess, podcast, showAlert }) => {
                         </label>
                         <div className="flex gap-2">
                             <label className="flex-1 inline-block px-4 py-2 bg-green-500 text-white rounded-lg cursor-pointer hover:bg-green-600 text-center">
-                                {uploadingImage ? <LoadingSpinner size="sm" /> : '🖼️ آپلود تصویر'}
+                                {uploadingImage ? <LoadingSpinner size="sm" /> : ' آپلود تصویر'}
                                 <input
                                     type="file"
                                     accept="image/*"

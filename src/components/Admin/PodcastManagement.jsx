@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import podcastApi from '../../api/podcastApi';
 import LoadingSpinner from '../Common/LoadingSpinner';
 import PodcastModal from './PodcastModal';
-import { Podcast } from 'lucide-react';
+import { Pencil, Podcast, Trash2 } from 'lucide-react';
 
 const PodcastManagement = ({ showAlert }) => {
     const [podcasts, setPodcasts] = useState([]);
@@ -193,15 +193,15 @@ const PodcastManagement = ({ showAlert }) => {
                                             <div className="flex gap-2">
                                                 <button
                                                     onClick={() => openEditModal(podcast)}
-                                                    className="text-blue-600 hover:text-blue-800"
+                                                    className="flex flex-col items-center text-blue-600 hover:text-blue-800"
                                                 >
-                                                    ✏️ ویرایش
+                                                    <Pencil /> ویرایش
                                                 </button>
                                                 <button
                                                     onClick={() => handleDelete(podcast.id, podcast.title)}
-                                                    className="text-red-600 hover:text-red-800"
+                                                    className="flex flex-col items-center text-red-600 hover:text-red-800"
                                                 >
-                                                    🗑️ حذف
+                                                    <Trash2 /> حذف
                                                 </button>
                                             </div>
                                         </td>

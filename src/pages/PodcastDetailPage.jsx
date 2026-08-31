@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import podcastApi from '../api/podcastApi';
 import LoadingSpinner from '../components/Common/LoadingSpinner';
-import { Podcast } from 'lucide-react';
+import { Blocks, Calendar, Clock9, Eye, Podcast } from 'lucide-react';
 
 const PodcastDetailPage = () => {
     const { id } = useParams();
@@ -71,7 +71,7 @@ const PodcastDetailPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 py-8">
-            <div className="max-w-6xl mx-auto px-4">
+            <div className="mx-auto px-4" style={{maxWidth:"var(--max-width)"}}>
                 {/* Back Button */}
                 <button
                     onClick={() => navigate('/podcasts')}
@@ -94,7 +94,7 @@ const PodcastDetailPage = () => {
                                     />
                                 ) : (
                                     <div className="w-full h-full flex items-center justify-center text-8xl bg-gradient-to-r from-blue-500 to-purple-500">
-                                        <Podcast size={30} />
+                                        <Podcast size={80} />
                                     </div>
                                 )}
                             </div>
@@ -104,9 +104,9 @@ const PodcastDetailPage = () => {
                                 <h1 className="text-2xl font-bold mb-4">{podcast.title}</h1>
                                 
                                 <div className="flex gap-4 mb-4 text-sm text-gray-500">
-                                    <span>⏱️ {formatDuration(podcast.duration)}</span>
-                                    <span>👁️ {formatViews(podcast.views)} بازدید</span>
-                                    <span>📅 {new Date(podcast.created_at).toLocaleDateString('fa-IR')}</span>
+                                    <span className="flex item-center gap-2"><Clock9 size={17}/> {formatDuration(podcast.duration)}</span>
+                                    <span className="flex item-center gap-2"><Eye size={17}/> {formatViews(podcast.views)} بازدید</span>
+                                    <span className="flex item-center gap-2"><Calendar size={17} /> {new Date(podcast.created_at).toLocaleDateString('fa-IR')}</span>
                                 </div>
 
                                 {podcast.tags && (
@@ -144,7 +144,7 @@ const PodcastDetailPage = () => {
                     {related.length > 0 && (
                         <div className="lg:col-span-1">
                             <div className="bg-white rounded-lg shadow-md p-4 sticky top-20">
-                                <h3 className="font-bold text-lg mb-4 text-right border-b pb-2">📚 مرتبط با این پادکست</h3>
+                                <h3 className="font-bold text-lg mb-4 text-right border-b pb-2 flex item-center gap-2"><Blocks size={30}/> مرتبط با این پادکست</h3>
                                 <div className="space-y-3">
                                     {related.map((item) => (
                                         <div

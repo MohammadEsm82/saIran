@@ -66,7 +66,7 @@ const ProductCarousel = () => {
                     <div key={index+'product'} className={`${styles.product} ${current==index?styles.activeProduct:''}`}>
                         <h3>{product.name}</h3>
                         <p>{product.model}</p>
-                        <a href='#'>معرفی محصولات</a>
+                        <a href='/products'>معرفی محصولات</a>
                         <img src={product.image} alt={product.model} />
                     </div>
                 )}

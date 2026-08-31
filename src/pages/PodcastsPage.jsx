@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import podcastApi from '../api/podcastApi';
 import LoadingSpinner from '../components/Common/LoadingSpinner';
-import { Podcast } from 'lucide-react';
+import { Clock, Eye, Flame, Podcast } from 'lucide-react';
 
 const PodcastsPage = () => {
     const navigate = useNavigate();
@@ -93,9 +93,9 @@ const PodcastsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 py-8">
-            <div className="max-w-7xl mx-auto px-4">
-                <div className="flex justify-between items-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-800">پادکست‌ها</h1>
+            <div className="mx-auto px-4" style={{maxWidth:"var(--max-width)"}}>
+                <div className="flex flex-col gap-3 md:flex-row justify-between items-center mb-8">
+                    <h1 className="text-3xl font-bold text-gray-800 ">پادکست‌ها</h1>
                     <div className="flex gap-2">
                         <input
                             type="text"
@@ -103,7 +103,7 @@ const PodcastsPage = () => {
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                            className="px-4 py-2 border border-gray-300 rounded-lg w-64 text-right"
+                            className="px-4 py-2 border border-gray-300 rounded-lg w-40 md:w-64 text-right"
                         />
                         <button
                             onClick={handleSearch}
@@ -159,8 +159,8 @@ const PodcastsPage = () => {
                                                     </p>
                                                     <div className="flex justify-between items-center mt-2">
                                                         <div className="flex gap-2 text-xs text-gray-500">
-                                                            <span>⏱️ {formatDuration(podcast.duration)}</span>
-                                                            <span>👁️ {formatViews(podcast.views)}</span>
+                                                            <span><Clock size={15}/> {formatDuration(podcast.duration)}</span>
+                                                            <span><Eye size={15} /> {formatViews(podcast.views)}</span>
                                                         </div>
                                                         {podcast.tags && (
                                                             <div className="text-xs text-blue-600">
@@ -191,10 +191,10 @@ const PodcastsPage = () => {
                     </div>
 
                     {/* Sidebar */}
-                    <div className="lg:col-span-1 space-y-6">
+                    <div className="md:col-span-1 space-y-6">
                         {/* Popular Podcasts */}
                         <div className="bg-white rounded-lg shadow-md p-4">
-                            <h3 className="font-bold text-lg mb-4 text-right border-b pb-2">🔥 محبوب‌ترین‌ها</h3>
+                            <h3 className="font-bold flex gap-2 text-lg mb-4 text-right border-b pb-2"> <Flame size={30} color="#ff8000ff" />محبوب‌ترین‌ها</h3>
                             <div className="space-y-3">
                                 {popularPodcasts.map((podcast) => (
                                     <div
@@ -224,7 +224,7 @@ const PodcastsPage = () => {
 
                         {/* Latest Podcasts */}
                         <div className="bg-white rounded-lg shadow-md p-4">
-                            <h3 className="font-bold text-lg mb-4 text-right border-b pb-2">🆕 جدیدترین‌ها</h3>
+                            <h3 className="font-bold text-lg mb-4 text-right border-b pb-2"> جدیدترین‌ها</h3>
                             <div className="space-y-3">
                                 {latestPodcasts.map((podcast) => (
                                     <div

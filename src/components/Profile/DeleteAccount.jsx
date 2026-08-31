@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import LoadingSpinner from '../Common/LoadingSpinner';
+import { TriangleAlert } from 'lucide-react';
 
 const DeleteAccount = ({ showAlert }) => {
     const { deleteAccount } = useAuth();
@@ -37,7 +38,7 @@ const DeleteAccount = ({ showAlert }) => {
         return (
             <div className="text-center">
                 <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
-                    <div className="text-6xl mb-4">⚠️</div>
+                    <div className="text-center mb-4 flex justify-center "> <TriangleAlert size={76} color="#c83c15ff" /></div>
                     <h3 className="text-xl font-bold text-red-800 mb-2">هشدار!</h3>
                     <p className="text-red-700 mb-4">
                         حذف حساب کاربری غیرقابل بازگشت است.

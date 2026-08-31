@@ -32,12 +32,14 @@
 
 
 .story {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+  display: flex;
   gap: 50px;
   width: 100%;
   max-width: var(--max-width);
+  padding: 0 20px;
+}
+.story > * {
+  width: 50%;
 }
 .storyDetails, .production div, .ourMission div {
   text-align: justify;
@@ -66,20 +68,20 @@
   font-weight: 100;
 }
 
-
 .staffImage {
   width: 100%;
   max-width: var(--max-width);
 }
 
-
 .production, .ourMission {
   width: 100%;
   max-width: var(--max-width);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+  padding: 0 20px;
+  display: flex;
   gap: 100px;
+}
+.production > *, .ourMission > * {
+  width: 50%;
 }
 .production img, .ourMission img {
   width: 100%;
@@ -109,6 +111,7 @@
   width: 100%;
   height: 100%;
   max-width: var(--max-width);
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,8 +129,9 @@
 .numbers {
   width: 100%;
   margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .numbers div {
   display: flex;
@@ -169,10 +173,12 @@
 .vision > div {
   width: 100%;
   max-width: var(--max-width);
+  padding: 0 20px;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+  display: flex;
+}
+.vision > div > * {
+  width: 50%;
 }
 .visionDetails, .visionTitle {
   display: flex;
@@ -194,4 +200,51 @@
   text-align: justify;
   align-items: flex-start;
   text-shadow: 0 0 3px black;
+}
+
+
+
+@media (max-width: 1000px) {
+  .story {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+  .story > * {
+    width: 100%;
+  }
+
+  .vision {
+    height: unset;
+    padding: 100px 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .vision > div {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+  .vision > div > * {
+    width: 100%;
+  }
+
+  .production, .ourMission {
+    flex-direction: column-reverse;
+  }
+  .production > *, .ourMission > * {
+    width: 100%;
+  }
+  .numbers {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .numbersSection {
+    height: 700px;
+  }
+  .numbers {
+    grid-template-columns: 1fr;
+  }
+  .mainImage {
+    text-align: center;
+  }
 }

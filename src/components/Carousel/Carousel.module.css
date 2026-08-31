@@ -24,10 +24,10 @@
   background: #00000037;
   border-radius: var(--border-radius);
   position: absolute;
-  width: 50%;
+  width: 80%;
   top: 50%;
-  left: 30%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
   color: var(--background);
 }
 .slide h2 {
@@ -56,7 +56,7 @@
 .leftA div, .rightA div {
   width: 60px;
   height: 100%;
-  background-color: rgba(0, 0, 255, 0.288);
+  background-color: rgba(184, 184, 188, 0.288);
   cursor: pointer;
   display: flex;
   align-items: center;
